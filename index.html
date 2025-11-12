@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Yearndex</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>The Yearndex</h1>
+    <h3 class="header-text">Email site suggestions, problems, or something you think I should make at natextaylor@gmail.com</h3>
+  </header>
+
+  <main>
+    <!-- Add new song -->
+    <section id="add-song">
+      <input type="text" id="new-song" placeholder="Add your favorite yearning song">
+      <input type="text" id="new-artist" placeholder="The song's artist or band">
+      <button id="submit-song">Add Song</button>
+      <button id="random-button">Random Song</button>
+    </section>
+
+    <div id="loading" class="loading">Gathering songs of longing…</div>
+
+
+    <!-- Songs list -->
+    <div class="songs-container">
+        <section id="songs-list">
+        <!-- Songs will be dynamically inserted here -->
+        </section>
+    </div>
+  </main>
+
+  <!-- Sticky Email Capture Footer -->
+  <footer>
+    <div id="email-capture">
+      <input type="email" id="email" placeholder="Enter your email">
+      <button id="submit-email">Subscribe</button>
+    </div>
+  </footer>
+
+  <script src="yearndex.js"></script>
+  <script src="email.js"></script>
+</body>
+</html>

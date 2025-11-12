@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap');
+
+/* ======== Base Layout ======== */
+body {
+  font-family: "Stack Sans Headline", sans-serif;
+  margin: 0;
+  padding-bottom: 80px;
+  background: radial-gradient(circle at top left, #f9f7f3, #f3ede7, #efe8df);
+  color: #3b2f2f;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+* {
+  font-family: "Stack Sans Headline", sans-serif;
+}
+
+/* ======== Header ======== */
+header {
+  background: linear-gradient(135deg, #f0e3d2, #e7d8c5);
+  color: #5c4630;
+  text-align: center;
+  padding: 16px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(155, 115, 73, 0.25);
+}
+
+.header-text {
+  font-size:0.75rem;
+  color:#a1927b;
+  font-weight:normal;
+  margin:0.4rem auto;
+  margin-bottom:0;
+  width:90%;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #4b3b2b;
+}
+
+/* ======== Add Song Form ======== */
+#add-song {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+#add-song input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #d6c7b0;
+  background: #fffaf5;
+  color: #4b3b2b;
+  font-size: 1rem;
+  min-width: 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#add-song input:focus {
+  background: #fff3e8;
+  outline: none;
+  box-shadow: 0 0 0 2px #c9a97d;
+}
+
+#add-song button {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #c9a97d;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+#add-song button:hover {
+  background: #b99665;
+  transform: translateY(-2px);
+}
+
+/* ======== Song List ======== */
+#songs-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.song {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fffdf9;
+  border: 2px solid #e5d8c8;
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: transform 0.4s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.song-left {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  margin-right: 12px;
+  line-height: 1.4;
+}
+
+.song-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #3c2f25;
+}
+
+.song-artist {
+  font-size: 0.85rem;
+  color: #857a6f;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* vote controls */
+.song-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.song:hover {
+  background: #fff9ef;
+  box-shadow: 0 0 10px rgba(201, 169, 125, 0.25);
+}
+
+.song.moving {
+  transform: scale(1.03);
+}
+
+/* ======== Top 3 Borders ======== */
+.song:nth-child(1) {
+  border-color: #d4af37; /* gold */
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.song:nth-child(2) {
+  border-color: #c0c0c0; /* silver */
+  box-shadow: 0 0 10px rgba(192, 192, 192, 0.25);
+}
+
+.song:nth-child(3) {
+  border-color: #cd7f32; /* bronze */
+  box-shadow: 0 0 10px rgba(205, 127, 50, 0.25);
+}
+
+/* ======== Vote Buttons ======== */
+.song button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 0.8rem;
+  color: #6e5a42;
+  transition: transform 0.15s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.song button:hover {
+  transform: translateY(-2px);
+  color: #b99665;
+}
+
+.vote-count {
+  font-weight: 600;
+  text-align: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+/* ======== Floating +1/-1 ======== */
+.vote-change {
+  position: absolute;
+  color: #6bb06b;
+  font-weight: bold;
+  pointer-events: none;
+  animation: floatUp 0.7s ease-out forwards;
+  right: 30px;
+  top: 10px;
+  text-shadow: 0 0 6px rgba(107, 176, 107, 0.4);
+}
+
+.vote-change.down {
+  color: #c35b5b;
+  text-shadow: 0 0 6px rgba(195, 91, 91, 0.4);
+}
+
+@keyframes floatUp {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-25px); }
+}
+
+/* ======== Footer (Email Capture) ======== */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 253, 247, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+  text-align: center;
+  justify-content: center;
+  align-items:center;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(201, 169, 125, 0.25);
+}
+
+#email-capture {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#email-capture input[type="email"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d6c7b0;
+  width: 20ch;
+  background: #fffaf5;
+  color: #4b3b2b;
+}
+
+#email-capture input::placeholder {
+  color: #9b8b7c;
+}
+
+#email-capture button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #c9a97d;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#email-capture button:hover {
+  background-color: #b99665;
+  transform: translateY(-2px);
+}
+
+/* ======== Responsive ======== */
+#add-song {
+  flex-wrap: wrap;
+}
+
+#add-song input,
+#add-song button {
+  flex: 1 1 100%;
+}
+
+.song {
+  flex-direction: row;
+  align-items: center;
+}
+
+.song-left {
+  max-width: 100%;
+}
+
+.song-right {
+  align-self: flex-start;
+}
+
+/* ======== Animations ======== */
+.song.new {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.loading {
+  text-align: center;
+  color: #8c7b67;
+  font-style: italic;
+  font-size: 1rem;
+  margin: 40px 0;
+  opacity: 0.8;
+  animation: fadePulse 2s ease-in-out infinite;
+}
+
+@keyframes fadePulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ======== Random Button ======== */
+button#random-button {
+  background: #b99665;
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button#random-button:hover {
+  background: #d2af77;
+  transform: translateY(-2px);
+}
+
+/* Highlight animation for random scroll */
+.song.highlight {
+  animation: glow 2s ease-in-out;
+}
+
+@keyframes glow {
+  0% { border: 2px solid #e5d8c8;; background: #fffdf9; }
+  50% { border: 2px solid rgba(31, 164, 55, 0.8); background:rgba(185, 253, 197, 0.8); }
+  100% { border: 2px solid #e5d8c8;; background: #fffdf9; }
+}
