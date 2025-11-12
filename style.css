@@ -220,7 +220,7 @@ footer {
   width: 100%;
   background: rgba(255, 253, 247, 0.95);
   backdrop-filter: blur(8px);
-  padding: 12px;
+  padding: 12px 0px;
   display: flex;
   flex-direction: column;
   margin:auto;
@@ -235,6 +235,7 @@ footer {
   display: flex;
   gap: 10px;
   align-items: center;
+  margin:auto;
 }
 
 #email-capture input[type="email"] {
